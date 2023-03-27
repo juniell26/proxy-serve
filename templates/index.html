@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Webpage</title>
+	<style>
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: stretch;
+			height: 500px;
+			margin: 20px;
+			padding: 20px;
+			border: 1px solid black;
+			border-radius: 10px;
+		}
+
+		.chatbox {
+			flex-basis: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 5px;
+			border: 1px solid black;
+			border-radius: 10px;
+			margin: 5px;
+			height: 95%;
+		}
+
+		.filebox {
+			flex-basis: 45%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 5px;
+			border: 1px solid black;
+			border-radius: 10px;
+			margin: 5px;
+			height: 85%;
+		}
+
+		textarea {
+			resize: none;
+			height: 70%;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 16px;
+		}
+
+		#chat {
+			display: flex;
+			flex-direction: column-reverse;
+			overflow-y: scroll;
+			height: 70%;
+			padding: 10px;
+			border-radius: 10px;
+			background-color: #eee;
+			font-size: 16px;
+		}
+
+		input[type=file] {
+			margin: 10px 0;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			font-size: 16px;
+            margin: 5px;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+        .product {
+			flex-basis: 15%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding: 5px;
+			border: 1px solid black;
+			border-radius: 10px;
+			margin: 5px;
+			height: 20%;
+		}
+        .product h2 {
+			margin: 0;
+			font-size: 20px;
+		}
+
+		.product p {
+			margin: 10px 0;
+			font-size: 16px;
+		}
+
+		.small {
+			background-color: #e6ffe6;
+		}
+        .medium {
+			background-color: #ffffcc;
+		}
+
+		.large {
+			background-color: #ffcccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="chatbox">
+			<div id="chat"></div>
+			<textarea id="message" placeholder="Type your message here"></textarea>
+			<button onclick="sendMessage()">Send</button>
+		</div>
+		<div class="filebox">
+			<div>
+				<h3>Upload file:</h3>
+				<input type="file" id="uploadFile">
+				<button onclick="uploadFile()">Upload</button>
+			</div>
+			<div>
+				<h3>Download file:</h3>
+                <div class="product small">
+                    <h2>Payload A</h2>
+                    <p>Size: 50MB</p>
+                    <button onclick="downloadFile()">Download</button>
+                </div>
+                <div class="product medium">
+                    <h2>Payload B</h2>
+                    <p>Size: 100MB</p>
+                    <button onclick="downloadFile()">Download</button>
+                </div>
+                <div class="product large">
+                    <h2>Payload C</h2>
+                    <p>Size: 500MB</p>
+                    <button onclick="downloadFile()">Download</button>
+                </div>
+				
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Chatbox functionality
+		function sendMessage() {
+			var message = document.getElementById("message").value;
+			document.getElementById("message").value = "";
+			var chat = document.getElementById("chat");
+			var p = document.createElement("p");
+			p.innerHTML = "<strong>You:</strong> " + message;
+			chat.appendChild(p);
+			chat.scrollTop = chat.scrollHeight;
+		}
+
+		// File upload functionality
+		function uploadFile() {
+        var file = document.getElementById("uploadFile").files[0];
+        console.log("File uploaded:", file.name);
+        uploadedFiles.push(file); // Add the file to the array
+        // Add code to upload the file to the server
+        }
+
+
+		// File download functionality
+        function downloadFile() {
+			console.log("Download button clicked");
+			// Add code to download the file from the server
+		}
+        
+	</script>
+</body>
+</html>
